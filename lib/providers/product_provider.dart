@@ -48,6 +48,7 @@ class ProductProvider with ChangeNotifier {
   }
 
   removeAll() {
+    facturaList.clear();
     facturaList.addAll(productList);
     productList.clear();
     notifyListeners();

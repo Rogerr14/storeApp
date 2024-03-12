@@ -25,6 +25,7 @@ class _FacturaPageState extends State<FacturaPage> {
           'FAKE STORE',
           style: TextStyle(color: Colors.white),
         ),
+        
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

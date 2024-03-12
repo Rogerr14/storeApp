@@ -23,6 +23,15 @@ class _CartPageState extends State<CartPage> {
           'FAKE STORE',
           style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(onPressed: (){
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      FacturaPage(productList: cartProvider.facturaList)));
+          }, icon: const Icon(Icons.list_alt_rounded))
+        ],
       ),
       body: ListView.builder(
         itemCount: cartProvider.productList.length,
