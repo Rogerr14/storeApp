@@ -12,9 +12,8 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    final cartProvider =
-        Provider.of<ProductProvider>(context, listen: false).productList;
-    
+    final cartProvider = Provider.of<ProductProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -25,15 +24,58 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: cartProvider.length,
+        itemCount: cartProvider.productList.length,
         itemBuilder: (context, index) {
           return Column(
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
-                  Image.network(cartProvider[index].image, height: 80, width: 80,),
-                  Text(cartProvider[index].title),
-                  Text(cartProvider[index].price.toString())
+                  Image.network(
+                    cartProvider.productList[index].image,
+                    height: 80,
+                    width: 80,
+                  ),
+                  SizedBox(
+                    width: 150,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(cartProvider.productList[index].title),
+                        Text(cartProvider.productList[index].price.toString()),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      if (cartProvider.productList[index].cantidad < 1) {
+                        return;
+                      }
+                      cartProvider.restProduct(cartProvider.productList[index]);
+                      setState(() {});
+                    },
+                    icon: Icon(Icons.remove),
+                  ),
+                  Text(
+                    cartProvider.productList[index].cantidad.toString(),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      cartProvider.addProduct(cartProvider.productList[index]);
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      Icons.add,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.delete,
+                    ),
+                  ),
                 ],
               )
             ],
