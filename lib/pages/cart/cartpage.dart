@@ -71,7 +71,13 @@ class _CartPageState extends State<CartPage> {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cartProvider
+                          .removeProduct(cartProvider.productList[index]);
+                          setState(() {
+                            
+                          });
+                    },
                     icon: Icon(
                       Icons.delete,
                     ),
