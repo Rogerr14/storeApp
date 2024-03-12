@@ -21,7 +21,7 @@ class AddProductProvider with ChangeNotifier {
   }
 
   addProduct(String title, File? image, String price, String description) {
-    print(title);
+    
     int lastIndex = productList.last.id;
     ProductModel productModel = ProductModel(
       id: lastIndex + 1,
