@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/models/product_model.dart';
 
-class ProductProvider with ChangeNotifier {
+
+class CartProvider with ChangeNotifier {
+  
+
   final List<ProductModel> _productList = [];
   final List<ProductModel> _facturaList = [];
   List<ProductModel> get productList => _productList;

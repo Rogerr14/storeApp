@@ -76,10 +76,13 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget customTextForm(String hint, String? Function(String?) validator,
       {required TextEditingController controller, bool isPassword = false}) {
+        final focusNode = FocusNode();
     return SizedBox(
       width: 300,
       height: 75,
       child: TextFormField(
+        focusNode: focusNode,
+        onTapOutside: (event) => focusNode.unfocus(),
         obscureText: isPassword,
         controller: controller,
         validator: validator,
@@ -97,8 +100,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  _loginButton(
-      ) {
+  _loginButton() {
     
     String correo = 'user01@gmail.com';
     String password = 'prueba01';

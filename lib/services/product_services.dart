@@ -6,11 +6,13 @@ class ProductServices {
   
 
   //obtener todos los productos
-  Future<List<ProductModel>> get getProduct async {
+  Future<List<ProductModel>> getProduct() async {
     final response = await http.get(Uri.parse(apiProdBase));
 
     if (response.statusCode == 200) {
-      return productsModelFromJson(response.body);
+      return  productsModelFromJson(response.body);
+      
+      //return product;
     } else {
       throw Exception('Error al cargar datos');
     }

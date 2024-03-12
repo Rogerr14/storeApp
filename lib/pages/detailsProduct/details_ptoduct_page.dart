@@ -22,7 +22,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<ProductProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
     //  final Object? id = GoRouterState.of(context).extra;
     
     Future<ProductModel> detailProduct =
@@ -64,7 +64,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
 }
 
 Widget _detalleView(BuildContext context, AsyncSnapshot<ProductModel> snapshot,
-    ProductProvider cartProvider) {
+    CartProvider cartProvider) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

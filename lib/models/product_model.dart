@@ -23,9 +23,9 @@ class ProductModel {
   final String title;
   final double price;
   final String description;
-  final Category category;
+  String category;
   final String image;
-  final Rating rating;
+   String rating;
   int cantidad;
 
   ProductModel({
@@ -33,9 +33,9 @@ class ProductModel {
     required this.title,
     required this.price,
     required this.description,
-    required this.category,
+   this.category = '',
     required this.image,
-    required this.rating,
+     this.rating = '',
     this.cantidad = 1,
   });
 
@@ -44,9 +44,9 @@ class ProductModel {
         title: json["title"],
         price: json["price"]?.toDouble(),
         description: json["description"],
-        category: categoryValues.map[json["category"]]!,
+        category: categoryValues.map[json["category"]]!.toString() ,
         image: json["image"],
-        rating: Rating.fromJson(json["rating"]),
+        rating: Rating.fromJson(json["rating"]).toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -54,9 +54,9 @@ class ProductModel {
         "title": title,
         "price": price,
         "description": description,
-        "category": categoryValues.reverse[category],
+        "category": '', //categoryValues.reverse[category],
         "image": image,
-        "rating": rating.toJson(),
+        "rating": '',
       };
 }
 
