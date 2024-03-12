@@ -31,6 +31,7 @@ final appRouter = GoRouter(
 
 */
 import 'package:flutter/material.dart';
+import 'package:store_app/pages/addProduct/add_product._page.dart';
 import 'package:store_app/pages/auth/loginpage.dart';
 import 'package:store_app/pages/cart/cartpage.dart';
 import 'package:store_app/pages/home/homepage.dart';
@@ -41,7 +42,7 @@ class Approute {
     '/loginPage' : (_) => const LoginPage(),
     '/homePage' : (_) => const HomePage(),
     '/cartPage' : (_) => const CartPage(),
-    //'/detailProductPage': (_) => const DetailProductPage()
+    '/addProductPage': (_) => const AddProductPage(),
     
   };
 }

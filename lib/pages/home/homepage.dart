@@ -13,14 +13,17 @@ class HomePage extends StatefulWidget {
 
 Future<List<ProductModel>> productos = ProductServices().getProduct;
 
+
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -52,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {}, // => Navigator.push(context, )
+        onPressed: () => Navigator.pushNamed(context,'/addProductPage' ),
         child: const Icon(Icons.add_box_sharp),
       ),
     );

@@ -35,14 +35,17 @@ class _LoginPageState extends State<LoginPage> {
           child: Form(
             key: _scaffoldKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: _formView(emailController: txtCorreo, passwordController: txtPassword),
+            child: _formView(
+                emailController: txtCorreo, passwordController: txtPassword),
           ),
         ),
       ),
     );
   }
 
-  Widget _formView({required TextEditingController emailController,required TextEditingController passwordController }) {
+  Widget _formView(
+      {required TextEditingController emailController,
+      required TextEditingController passwordController}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -56,17 +59,17 @@ class _LoginPageState extends State<LoginPage> {
         customTextForm(
           'Correo',
           isEmail,
-          controller: txtCorreo,
+          controller: emailController,
         ),
         const SizedBox(
           height: 20,
         ),
         customTextForm('Constraseña', isPassword,
-            isPassword: true, controller: txtPassword),
+            isPassword: true, controller: passwordController),
         const SizedBox(
           height: 20,
         ),
-        _loginButton(email: txtCorreo.text, psw: txtPassword.text),
+        _loginButton(),
       ],
     );
   }
@@ -79,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
       child: TextFormField(
         obscureText: isPassword,
         controller: controller,
+        validator: validator,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(15),
           enabledBorder: OutlineInputBorder(
@@ -93,21 +97,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  _loginButton({required String email, required String psw}) {
+  _loginButton(
+      ) {
+    
     String correo = 'user01@gmail.com';
     String password = 'prueba01';
 
     return OutlinedButton(
       onPressed: () {
         if (_scaffoldKey.currentState!.validate()) {
-          print('si aqui');
-          print(email);
-          if (email.trim() == correo && psw.trim() == password) {
+          
+          if (txtCorreo.text == correo && txtPassword.text == password) {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/homePage', (route) => false);
-          } else {
-            print('no sale');
-          }
+          } 
+            
+          
         }
       },
       style: OutlinedButton.styleFrom(
