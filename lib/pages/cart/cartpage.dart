@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:store_app/pages/Factura/facturapage.dart';
 import 'package:store_app/providers/product_provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -56,7 +57,7 @@ class _CartPageState extends State<CartPage> {
                       cartProvider.restProduct(cartProvider.productList[index]);
                       setState(() {});
                     },
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                   ),
                   Text(
                     cartProvider.productList[index].cantidad.toString(),
@@ -66,7 +67,7 @@ class _CartPageState extends State<CartPage> {
                       cartProvider.addProduct(cartProvider.productList[index]);
                       setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                     ),
                   ),
@@ -74,11 +75,9 @@ class _CartPageState extends State<CartPage> {
                     onPressed: () {
                       cartProvider
                           .removeProduct(cartProvider.productList[index]);
-                          setState(() {
-                            
-                          });
+                      setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete,
                     ),
                   ),
@@ -87,6 +86,19 @@ class _CartPageState extends State<CartPage> {
             ],
           );
         },
+      ),
+      floatingActionButton: OutlinedButton(
+        onPressed: () {
+          cartProvider.removeAll();
+          
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      FacturaPage(productList: cartProvider.facturaList)));
+          setState(() {});
+        },
+        child: const Text('Generar Factura'),
       ),
     );
   }

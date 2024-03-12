@@ -3,7 +3,9 @@ import 'package:store_app/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
   final List<ProductModel> _productList = [];
+  final List<ProductModel> _facturaList = [];
   List<ProductModel> get productList => _productList;
+  List<ProductModel> get facturaList => _facturaList;
 
   addProduct(ProductModel productModel) {
     bool existProduct = false;
@@ -42,6 +44,12 @@ class ProductProvider with ChangeNotifier {
       }
     }
 
+    notifyListeners();
+  }
+
+  removeAll() {
+    facturaList.addAll(productList);
+    productList.clear();
     notifyListeners();
   }
 }

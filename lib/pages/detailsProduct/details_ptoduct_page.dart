@@ -24,7 +24,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<ProductProvider>(context, listen: false);
     //  final Object? id = GoRouterState.of(context).extra;
-    print(cartProvider.productList);
+    
     Future<ProductModel> detailProduct =
         ProductServices().getProductDetail(widget.id);
 

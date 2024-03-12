@@ -3,7 +3,7 @@ import 'package:store_app/api/api.dart';
 import 'package:store_app/models/product_model.dart';
 
 class ProductServices {
-  final List<ProductModel> listProduct = [];
+  
 
   //obtener todos los productos
   Future<List<ProductModel>> get getProduct async {
